@@ -1,16 +1,17 @@
-# This is a sample Python script.
+# Example usage:
+from block import Block
+from simple_blockchain import Blockchain
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+if __name__ == "__main__":
+    # create a blockchain and print the initial state
+    my_blockchain = Blockchain()
+    print("Blockchain initialized with Genesis Block:")
+    print("Block 0 - Hash:", my_blockchain.get_latest_block().hash)
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    # add new blocks to the blockchain
+    for i in range(1, 4):
+        new_block_data = f"Block {i} Data"
+        new_block = Block(None, None, None, new_block_data)
+        my_blockchain.add_block(new_block)
+        print(f"Block {i} added to the blockchain:")
+        print(f"Block {i} - Hash:", new_block.hash)
